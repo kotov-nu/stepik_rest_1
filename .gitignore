@@ -1,0 +1,8 @@
+# Project exclude paths
+/venv/
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/.gitignore
+/.idea/drf_1.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/vcs.xml
