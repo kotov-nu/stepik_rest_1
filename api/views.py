@@ -8,7 +8,7 @@ from rest_framework.viewsets import ModelViewSet
 
 from api.models import ProductSet, Recipient, Order
 from api.serializers import ProductSetSerializer, RecipientSerializer, OrderSerializer, AddressEditionSerializer, \
-    StatusEditionSerializer
+    StatusEditionSerializer, EditRecipientSurnameSerializer
 
 
 class ProductSetModelViewSet(ModelViewSet):
@@ -52,7 +52,7 @@ class EditRecipientSurnameViewSet(ModelViewSet):
         if 'id' not in request:
             return Response('Не указано поле id', status=HTTP_400_BAD_REQUEST)
         recipient = Recipient.objects.get(id=request['id'])
-        serializer = RecipientSerializer(recipient, data=request.data, partial=True)
+        serializer = EditRecipientSurnameSerializer(recipient, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=HTTP_200_OK)

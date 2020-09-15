@@ -15,6 +15,12 @@ class RecipientSerializer(ModelSerializer):
         fields = '__all__'
 
 
+class EditRecipientSurnameSerializer(ModelSerializer):
+    class Meta:
+        model = Recipient
+        fields = ['surname']
+
+
 class OrderSerializer(ModelSerializer):
     class Meta:
         model = Order
