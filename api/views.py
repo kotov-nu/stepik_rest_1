@@ -36,7 +36,7 @@ class EditRecipientAddressViewSet(ModelViewSet):
         serializer = RecipientSerializer(recipient, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data)
+            return Response(serializer.data, status=HTTP_200_OK)
 
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
 
@@ -55,7 +55,7 @@ class EditRecipientSurnameViewSet(ModelViewSet):
         serializer = RecipientSerializer(recipient, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data)
+            return Response(serializer.data, status=HTTP_200_OK)
 
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
 
@@ -79,7 +79,7 @@ class OrderModelViewSet(ModelViewSet):
         serializer = AddressEditionSerializer(delivery_address, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response(status=HTTP_200_OK)
+            return Response(request.data, status=HTTP_200_OK)
         else:
             return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
 
@@ -93,6 +93,6 @@ class OrderModelViewSet(ModelViewSet):
         serializer = StatusEditionSerializer(order_status, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response(status=HTTP_200_OK)
+            return Response(request.data, status=HTTP_200_OK)
         else:
             return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
