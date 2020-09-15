@@ -6,34 +6,28 @@ from api.models import ProductSet, Recipient, Order
 class ProductSetSerializer(ModelSerializer):
     class Meta:
         model = ProductSet
-        fields = [
-            'id',
-            'title',
-            'description',
-        ]
+        fields = '__all__'
 
 
 class RecipientSerializer(ModelSerializer):
     class Meta:
         model = Recipient
-        fields = [
-            'id',
-            'surname',
-            'name',
-            'patronymic',
-            'phone_number',
-            'delivery_address',
-        ]
+        fields = '__all__'
 
 
 class OrderSerializer(ModelSerializer):
     class Meta:
         model = Order
-        fields = [
-            'id',
-            'order_created_datetime',
-            'delivery_datetime',
-            'recipient',
-            'product_set',
-            'status',
-        ]
+        fields = '__all__'
+
+
+class AddressEditionSerializer(ModelSerializer):
+    class Meta:
+        model = Order
+        fields = ['delivery_address']
+
+
+class StatusEditionSerializer(ModelSerializer):
+    class Meta:
+        model = Order
+        fields = ['status']
